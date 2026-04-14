@@ -76,6 +76,7 @@ const adminRegister = async (req, res) => {
             res.send(result);
         }
     } catch (err) {
+        console.error("ADMIN REGISTER ERROR:", err);
         res.status(500).json(err);
     }
 };
