@@ -12,8 +12,11 @@ const Homepage = () => {
         <StyledContainer>
             {/* Top Navigation Bar */}
             <Navbar>
-                <img src={logo} alt="Mi Software Logo" style={{ height: '45px' }} />
-                <NavLinks>
+                <BrandContainer>
+                    <img src={logo} alt="Mi Software Logo" style={{ height: '60px' }} />
+                    <BrandText>MISchool ERP</BrandText>
+                </BrandContainer>
+                <NavLinks style={{ marginRight: '80px'}}>
                     <Link to="/choose" style={{ textDecoration: 'none' }}>
                        <Button sx={{ color: '#7f56da', fontWeight: 'bold', fontSize: '1rem' }}>Login</Button>
                     </Link>
@@ -87,12 +90,29 @@ const StyledContainer = styled.div`
 
 const Navbar = styled.nav`
   width: 100%;
-  padding: 24px 3%;
+  padding: 24px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 10;
+`;
+
+const BrandContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 40px;
+`;
+
+const BrandText = styled.span`
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #2c2143;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1a1a2e 0%, #550080 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const NavLinks = styled.div`
