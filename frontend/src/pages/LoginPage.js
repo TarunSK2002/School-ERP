@@ -4,13 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress, Backdrop } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import bgpic from "../assets/designlogin.jpg"
+import logo from "../assets/Mi_logo_v001 - cropped.png"
 import { LightPurpleButton } from '../components/buttonStyles';
+import AnimatedDashboard from '../components/AnimatedDashboard';
 import styled from 'styled-components';
 import { loginUser } from '../redux/userRelated/userHandle';
 import Popup from '../components/Popup';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+    components: {
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    borderRadius: '12px',
+                },
+            },
+        },
+    },
+});
 
 const LoginPage = ({ role }) => {
 
@@ -128,20 +139,21 @@ const LoginPage = ({ role }) => {
                 <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
                     <Box
                         sx={{
-                            my: 8,
+                            my: 3,
                             mx: 4,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}
                     >
-                        <Typography variant="h4" sx={{ mb: 2, color: "#2c2143" }}>
+                        <img src={logo} alt="logo" style={{ width: '130px', marginBottom: '20px' }} />
+                        <Typography variant="h4" sx={{ mb: 1, color: "#2c2143", fontWeight: 'bold' }}>
                             {role} Login
                         </Typography>
-                        <Typography variant="h7">
-                            Welcome back! Please enter your details
+                        <Typography variant="body1" sx={{ color: "#666", mb: 2 }}>
+                            Welcome back! Please enter your details.
                         </Typography>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
+                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, width: '100%' }}>
                             {role === "Student" ? (
                                 <>
                                     <TextField
@@ -236,7 +248,20 @@ const LoginPage = ({ role }) => {
                                 fullWidth
                                 onClick={guestModeHandler}
                                 variant="outlined"
-                                sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
+                                sx={{ 
+                                    mt: 2, mb: 3, 
+                                    color: "#7f56da", 
+                                    borderColor: "#7f56da",
+                                    borderRadius: "50px",
+                                    padding: "12px 24px",
+                                    fontSize: "1.1rem",
+                                    fontWeight: "600",
+                                    textTransform: "none",
+                                    '&:hover': {
+                                        borderColor: "#550080",
+                                        backgroundColor: "rgba(127, 86, 218, 0.05)"
+                                    }
+                                }}
                             >
                                 Login as Guest
                             </Button>
@@ -261,14 +286,17 @@ const LoginPage = ({ role }) => {
                     sm={4}
                     md={7}
                     sx={{
-                        backgroundImage: `url(${bgpic})`,
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
+                        background: 'linear-gradient(135deg, #7f56da 0%, #550080 100%)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        color: 'white',
+                        overflow: 'hidden'
                     }}
-                />
+                >
+                    <AnimatedDashboard />
+                </Grid>
             </Grid>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

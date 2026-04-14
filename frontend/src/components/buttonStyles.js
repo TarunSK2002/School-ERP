@@ -63,8 +63,18 @@ export const LightPurpleButton = styled(Button)`
   && {
     background-color: #7f56da;
     color: #fff;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: none;
+    box-shadow: 0 5px 15px rgba(127, 86, 218, 0.3);
+    transition: all 0.3s ease;
+    
     &:hover {
-      background-color: #7a1ccb;
+      background-color: #550080;
+      box-shadow: 0 8px 25px rgba(127, 86, 218, 0.4);
+      transform: translateY(-2px);
     }
   }
 `;
